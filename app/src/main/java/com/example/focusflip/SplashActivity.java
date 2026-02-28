@@ -23,8 +23,9 @@ public class SplashActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash);
 
-        SharedPreferences resigter = getSharedPreferences("register", MODE_PRIVATE);
-        if(resigter.getBoolean("isRegistered",false)){
+        boolean isRegistered = getSharedPreferences("register", MODE_PRIVATE).getBoolean("isRegistered",false);
+
+        if(isRegistered){
             Intent LoginActivity = new Intent(SplashActivity.this, LoginActivity.class);
             startActivity(LoginActivity);
             finish();

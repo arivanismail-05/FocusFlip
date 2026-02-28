@@ -12,13 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FocusFlip">
         <activity
-            android:name=".SplashActivity"
+            android:name=".focusActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SignUpActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

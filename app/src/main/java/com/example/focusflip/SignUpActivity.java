@@ -53,7 +53,7 @@ public class SignUpActivity extends AppCompatActivity {
                 int day_of_birth= Integer.parseInt(day.getText().toString());
                 int year_of_birth = Integer.parseInt(year.getText().toString());
 
-                edit.putString("username", name.getText().toString());
+                edit.putString("name", name.getText().toString());
                 edit.putString("password", password.getText().toString());
                 edit.putString("email", email.getText().toString());
                 edit.putInt("day" , day_of_birth);
