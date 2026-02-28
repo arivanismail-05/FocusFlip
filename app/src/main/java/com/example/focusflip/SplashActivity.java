@@ -1,6 +1,7 @@
 package com.example.focusflip;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -22,6 +23,7 @@ public class SplashActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash);
 
+        SharedPreferences resigter = getSharedPreferences("register", MODE_PRIVATE);
         if(resigter.getBoolean("isRegistered",false)){
             Intent LoginActivity = new Intent(SplashActivity.this, LoginActivity.class);
             startActivity(LoginActivity);
