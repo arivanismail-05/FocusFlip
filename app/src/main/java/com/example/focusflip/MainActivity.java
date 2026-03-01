@@ -1,6 +1,8 @@
 package com.example.focusflip;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -36,6 +38,16 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault());
         String currentDate = dateFormat.format(new Date());
         date_text.setText(currentDate);
+
+        start_focus = findViewById(R.id.start_focus);
+
+        start_focus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent focusActivity = new Intent(MainActivity.this, focusActivity.class);
+                startActivity(focusActivity);
+            }
+        });
 
     }
 }
