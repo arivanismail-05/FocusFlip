@@ -7,4 +7,17 @@
     tools:context=".SelectSubjectActivity"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Your Subject"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_margin="16dp" />
+
+    <ListView
+        android:id="@+id/subject_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
