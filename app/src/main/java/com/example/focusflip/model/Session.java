@@ -1,4 +1,4 @@
-package com.example.focusflip.data;
+package com.example.focusflip.model;
 
 public class Session {
 

@@ -16,26 +16,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FocusFlip">
         <activity
-            android:name=".HistoryActivity"
+            android:name=".controller.HistoryActivity"
             android:exported="false" />
         <activity
-            android:name=".TimerActivity"
+            android:name=".controller.TimerActivity"
             android:exported="false" />
         <activity
-            android:name=".SelectSubjectActivity"
+            android:name=".controller.SelectSubjectActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfileActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".SignUpActivity"
+            android:name=".controller.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".controller.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".controller.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".controller.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,7 +43,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".controller.MainActivity"
             android:exported="false" />
     </application>
 

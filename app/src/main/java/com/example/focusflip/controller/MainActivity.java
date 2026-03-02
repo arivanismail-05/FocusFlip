@@ -1,4 +1,4 @@
-package com.example.focusflip;
+package com.example.focusflip.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,9 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.focusflip.data.DashboardHelper;
+import com.example.focusflip.R;
+import com.example.focusflip.model.DashboardHelper;
+import com.example.focusflip.model.UserRepository;
 import com.google.android.material.button.MaterialButton;
 
 import java.text.SimpleDateFormat;
@@ -17,8 +19,8 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView welcome_text,date_text,streak,total_study;
-    MaterialButton start_focus,view_history,profile;
+    TextView welcome_text, date_text, streak, total_study;
+    MaterialButton start_focus, view_history, profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +37,6 @@ public class MainActivity extends AppCompatActivity {
         view_history = findViewById(R.id.view_history);
         profile = findViewById(R.id.profile);
 
-        String name = getSharedPreferences("register", MODE_PRIVATE).getString("name","");
-
-        welcome_text.setText("Hello, "+name+"! 👋");
-
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault());
         String currentDate = dateFormat.format(new Date());
         date_text.setText(currentDate);
@@ -46,38 +44,36 @@ public class MainActivity extends AppCompatActivity {
         start_focus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent focusActivity = new Intent(MainActivity.this, SelectSubjectActivity.class);
-                startActivity(focusActivity);
+                Intent intent = new Intent(MainActivity.this, SelectSubjectActivity.class);
+                startActivity(intent);
             }
         });
 
         view_history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent focusActivity = new Intent(MainActivity.this, HistoryActivity.class);
-                startActivity(focusActivity);
+                Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
+                startActivity(intent);
             }
         });
 
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent focusActivity = new Intent(MainActivity.this, ProfileActivity.class);
-                startActivity(focusActivity);
+                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(intent);
             }
         });
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        // Reload name from SharedPreferences so it updates after profile edit
-        String name = getSharedPreferences("register", MODE_PRIVATE).getString("name", "");
+        UserRepository userRepository = new UserRepository(this);
+        String name = userRepository.getName();
         welcome_text.setText("Hello, " + name + "! 👋");
 
-        // Use DashboardHelper to calculate streak and total study time
         DashboardHelper helper = new DashboardHelper(this);
 
         int streakCount = helper.getStreak();
@@ -87,3 +83,4 @@ public class MainActivity extends AppCompatActivity {
         total_study.setText("⏱️ " + totalMinutes + " min total study time");
     }
 }
+

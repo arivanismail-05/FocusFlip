@@ -1,7 +1,6 @@
-package com.example.focusflip;
+package com.example.focusflip.controller;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -9,6 +8,8 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.focusflip.R;
+import com.example.focusflip.model.UserRepository;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -29,19 +30,18 @@ public class ProfileActivity extends AppCompatActivity {
         logout = findViewById(R.id.logout);
         delete_account = findViewById(R.id.delete_account);
 
-        String name = getSharedPreferences("register", MODE_PRIVATE).getString("name", "");
-        String email = getSharedPreferences("register", MODE_PRIVATE).getString("email", "");
+        UserRepository userRepository = new UserRepository(this);
 
-        profile_name.setText(name);
-        profile_email.setText(email);
+        profile_name.setText(userRepository.getName());
+        profile_email.setText(userRepository.getEmail());
 
         update_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor editor = getSharedPreferences("register", MODE_PRIVATE).edit();
-                editor.putString("name", profile_name.getText().toString());
-                editor.putString("email", profile_email.getText().toString());
-                editor.apply();
+                userRepository.updateProfile(
+                        profile_name.getText().toString(),
+                        profile_email.getText().toString()
+                );
                 Toast.makeText(ProfileActivity.this, "Profile Updated", Toast.LENGTH_SHORT).show();
             }
         });
@@ -49,9 +49,7 @@ public class ProfileActivity extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor editor = getSharedPreferences("register", MODE_PRIVATE).edit();
-                editor.putBoolean("isRegistered", false);
-                editor.apply();
+                userRepository.logout();
                 Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
@@ -61,9 +59,7 @@ public class ProfileActivity extends AppCompatActivity {
         delete_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor editor = getSharedPreferences("register", MODE_PRIVATE).edit();
-                editor.clear();
-                editor.apply();
+                userRepository.deleteAccount();
                 Intent intent = new Intent(ProfileActivity.this, SplashActivity.class);
                 startActivity(intent);
                 finish();
@@ -71,3 +67,4 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 }
+

@@ -1,4 +1,4 @@
-package com.example.focusflip;
+package com.example.focusflip.view;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.focusflip.R;
+
 public class CustomAdapter extends BaseAdapter {
 
     String[] subjects;
@@ -14,7 +16,7 @@ public class CustomAdapter extends BaseAdapter {
     String[] dates;
     Activity Context;
 
-    CustomAdapter(String[] subjects, String[] durations, String[] dates, Activity Context) {
+    public CustomAdapter(String[] subjects, String[] durations, String[] dates, Activity Context) {
         this.subjects = subjects;
         this.durations = durations;
         this.dates = dates;
@@ -46,3 +48,4 @@ public class CustomAdapter extends BaseAdapter {
         return view;
     }
 }
+

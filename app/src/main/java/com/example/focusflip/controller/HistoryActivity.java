@@ -1,4 +1,4 @@
-package com.example.focusflip;
+package com.example.focusflip.controller;
 
 import android.os.Bundle;
 import android.view.View;
@@ -9,8 +9,10 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.focusflip.data.Session;
-import com.example.focusflip.data.SessionRepository;
+import com.example.focusflip.R;
+import com.example.focusflip.model.Session;
+import com.example.focusflip.model.SessionRepository;
+import com.example.focusflip.view.CustomAdapter;
 
 import java.util.List;
 
@@ -52,3 +54,4 @@ public class HistoryActivity extends AppCompatActivity {
         });
     }
 }
+

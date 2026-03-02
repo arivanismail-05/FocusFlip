@@ -1,4 +1,4 @@
-package com.example.focusflip;
+package com.example.focusflip.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.focusflip.R;
 
 public class SelectSubjectActivity extends AppCompatActivity {
 
@@ -39,3 +41,4 @@ public class SelectSubjectActivity extends AppCompatActivity {
         });
     }
 }
+
