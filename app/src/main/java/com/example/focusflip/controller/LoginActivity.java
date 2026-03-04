@@ -2,53 +2,71 @@ package com.example.focusflip.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.focusflip.R;
+import com.example.focusflip.model.UserRepository;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginActivity extends AppCompatActivity {
 
-    TextInputEditText email,password;
+    private TextInputEditText email, password;
+    private MaterialButton login;
+    private UserRepository userRepository;
 
-    MaterialButton login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
 
+        userRepository = new UserRepository(this);
+
+        initViews();
+        setupListeners();
+    }
+
+    private void initViews() {
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         login = findViewById(R.id.login);
+    }
 
-        String email_preference = getSharedPreferences("register", MODE_PRIVATE).getString("email","");
-        String password_preference = getSharedPreferences("register", MODE_PRIVATE).getString("password","");
+    private void setupListeners() {
+        login.setOnClickListener(v -> attemptLogin());
+    }
 
+    private void attemptLogin() {
+        String inputEmail = email.getText().toString().trim();
+        String inputPassword = password.getText().toString().trim();
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(email.getText().toString().equals(email_preference) && password.getText().toString().equals(password_preference)){
-                    Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                    Intent MainActivity = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(MainActivity);
-                    finish();
-                }else{
-                    Toast.makeText(LoginActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        if (inputEmail.isEmpty()) {
+            email.setError("Email is required");
+            email.requestFocus();
+            return;
+        }
 
+        if (inputPassword.isEmpty()) {
+            password.setError("Password is required");
+            password.requestFocus();
+            return;
+        }
 
+        if (inputEmail.equals(userRepository.getEmail()) && inputPassword.equals(userRepository.getPassword())) {
+            Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
+            navigateTo(MainActivity.class);
+        } else {
+            Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+        }
+    }
 
+    private void navigateTo(Class<?> destination) {
+        Intent intent = new Intent(LoginActivity.this, destination);
+        startActivity(intent);
+        finish();
     }
 }

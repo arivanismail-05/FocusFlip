@@ -5,11 +5,13 @@ import android.content.SharedPreferences;
 
 public class UserRepository {
 
-    SharedPreferences sharedPreferences;
+    private SharedPreferences sharedPreferences;
 
     public UserRepository(Context context) {
         sharedPreferences = context.getSharedPreferences("register", Context.MODE_PRIVATE);
     }
+
+    // ==================== READ ====================
 
     public String getName() {
         return sharedPreferences.getString("name", "");
@@ -27,13 +29,23 @@ public class UserRepository {
         return sharedPreferences.getBoolean("isRegistered", false);
     }
 
-    public void updateName(String name) {
-        sharedPreferences.edit().putString("name", name).apply();
+    // ==================== CREATE ====================
+
+    public void register(String name, String email, String password,
+                         int day, int year, String month, String gender) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("name", name);
+        editor.putString("email", email);
+        editor.putString("password", password);
+        editor.putInt("day", day);
+        editor.putInt("year", year);
+        editor.putString("month", month);
+        editor.putString("gender", gender);
+        editor.putBoolean("isRegistered", true);
+        editor.apply();
     }
 
-    public void updateEmail(String email) {
-        sharedPreferences.edit().putString("email", email).apply();
-    }
+    // ==================== UPDATE ====================
 
     public void updateProfile(String name, String email) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -42,12 +54,9 @@ public class UserRepository {
         editor.apply();
     }
 
-    public void logout() {
-        sharedPreferences.edit().putBoolean("isRegistered", false).apply();
-    }
+    // ==================== DELETE ====================
 
     public void deleteAccount() {
         sharedPreferences.edit().clear().apply();
     }
 }
-

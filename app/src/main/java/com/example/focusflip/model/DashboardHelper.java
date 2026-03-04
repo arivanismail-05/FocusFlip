@@ -11,11 +11,13 @@ import java.util.Set;
 
 public class DashboardHelper {
 
-    SessionRepository sessionRepository;
+    private SessionRepository sessionRepository;
 
     public DashboardHelper(Context context) {
         sessionRepository = new SessionRepository(context);
     }
+
+    // ==================== READ ====================
 
     public int getTotalStudyTime() {
         List<Session> sessions = sessionRepository.getAllSessions();
@@ -32,12 +34,22 @@ public class DashboardHelper {
             return 0;
         }
 
-        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault());
+        Set<String> sessionDates = collectDates(sessions);
+        return calculateStreak(sessionDates);
+    }
+
+    // ==================== PRIVATE HELPERS ====================
+
+    private Set<String> collectDates(List<Session> sessions) {
         Set<String> sessionDates = new HashSet<>();
         for (int i = 0; i < sessions.size(); i++) {
             sessionDates.add(sessions.get(i).getDate());
         }
+        return sessionDates;
+    }
 
+    private int calculateStreak(Set<String> sessionDates) {
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault());
         Calendar cal = Calendar.getInstance();
         String today = sdf.format(cal.getTime());
 
@@ -65,4 +77,3 @@ public class DashboardHelper {
         return streak;
     }
 }
-

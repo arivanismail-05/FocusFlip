@@ -1,4 +1,4 @@
-package com.example.focusflip.view;
+package com.example.focusflip.component;
 
 import android.app.Activity;
 import android.view.LayoutInflater;

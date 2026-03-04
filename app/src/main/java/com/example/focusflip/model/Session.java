@@ -2,15 +2,17 @@ package com.example.focusflip.model;
 
 public class Session {
 
-    String subject;
-    int duration;
-    String date;
+    private String subject;
+    private int duration;
+    private String date;
 
     public Session(String subject, int duration, String date) {
         this.subject = subject;
         this.duration = duration;
         this.date = date;
     }
+
+    // ==================== GETTERS ====================
 
     public String getSubject() {
         return subject;
@@ -24,4 +26,3 @@ public class Session {
         return date;
     }
 }
-

@@ -1,9 +1,7 @@
 package com.example.focusflip.controller;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
@@ -20,28 +18,26 @@ public class SplashActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash);
 
-        SharedPreferences resigter = getSharedPreferences("register", MODE_PRIVATE);
-        boolean isRegistered = resigter.getBoolean("isRegistered", false);
+        UserRepository userRepository = new UserRepository(this);
 
-        if (isRegistered) {
-            // User has an account but is not logged in, go to login
-            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-            startActivity(intent);
-            finish();
+        // User already signed up before → go straight to Login, never show Splash again
+        if (userRepository.isRegistered()) {
+            navigateTo(LoginActivity.class);
             return;
         }
 
-        // First time user — no account yet, show splash and let them tap to sign up
-        LinearLayout main = findViewById(R.id.main);
+        // First time ever → show Splash, tap to go to SignUp
+        setupListeners();
+    }
 
-        main.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SplashActivity.this, SignUpActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+    private void setupListeners() {
+        LinearLayout main = findViewById(R.id.main);
+        main.setOnClickListener(v -> navigateTo(SignUpActivity.class));
+    }
+
+    private void navigateTo(Class<?> destination) {
+        Intent intent = new Intent(SplashActivity.this, destination);
+        startActivity(intent);
+        finish();
     }
 }
-

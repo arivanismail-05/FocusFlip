@@ -1,8 +1,6 @@
 package com.example.focusflip.controller;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -10,13 +8,16 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.focusflip.R;
+import com.example.focusflip.component.CustomAdapter;
 import com.example.focusflip.model.Session;
 import com.example.focusflip.model.SessionRepository;
-import com.example.focusflip.view.CustomAdapter;
 
 import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity {
+
+    private ListView history_list;
+    private SessionRepository sessionRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,17 @@ public class HistoryActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_history);
 
-        SessionRepository sessionRepository = new SessionRepository(this);
+        sessionRepository = new SessionRepository(this);
+
+        initViews();
+        loadHistory();
+    }
+
+    private void initViews() {
+        history_list = findViewById(R.id.history_list);
+    }
+
+    private void loadHistory() {
         List<Session> sessions = sessionRepository.getAllSessions();
 
         if (sessions.isEmpty()) {
@@ -43,15 +54,14 @@ public class HistoryActivity extends AppCompatActivity {
         }
 
         CustomAdapter adapter = new CustomAdapter(subjects, durations, dates, this);
-        ListView history_list = findViewById(R.id.history_list);
         history_list.setAdapter(adapter);
 
-        history_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
-                Toast.makeText(HistoryActivity.this, subjects[i], Toast.LENGTH_SHORT).show();
-            }
-        });
+        setupListeners(subjects);
+    }
+
+    private void setupListeners(String[] subjects) {
+        history_list.setOnItemClickListener((parent, view, i, id) ->
+                Toast.makeText(this, subjects[i], Toast.LENGTH_SHORT).show()
+        );
     }
 }
-
