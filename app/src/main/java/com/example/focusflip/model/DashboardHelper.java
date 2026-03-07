@@ -3,6 +3,7 @@ package com.example.focusflip.model;
 import android.content.Context;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
@@ -26,6 +27,33 @@ public class DashboardHelper {
             total += sessions.get(i).getDuration();
         }
         return total;
+    }
+
+    public int getTodayStudyTime() {
+        List<Session> sessions = sessionRepository.getAllSessions();
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault());
+        String today = sdf.format(Calendar.getInstance().getTime());
+        int total = 0;
+        for (int i = 0; i < sessions.size(); i++) {
+            if (sessions.get(i).getDate().equals(today)) {
+                total += sessions.get(i).getDuration();
+            }
+        }
+        return total;
+    }
+
+    public int getTotalSessions() {
+        return sessionRepository.getAllSessions().size();
+    }
+
+    public List<Session> getRecentSessions(int limit) {
+        List<Session> allSessions = sessionRepository.getAllSessions();
+        List<Session> recent = new ArrayList<>();
+        int count = Math.min(limit, allSessions.size());
+        for (int i = 0; i < count; i++) {
+            recent.add(allSessions.get(i));
+        }
+        return recent;
     }
 
     public int getStreak() {

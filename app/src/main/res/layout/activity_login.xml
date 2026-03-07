@@ -44,7 +44,7 @@
         app:boxStrokeWidth="1dp"
         app:boxStrokeWidthFocused="2dp"
         app:hintTextColor="@color/primary"
-        app:defaultHintTextColor="@color/soft_gray">
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email"
@@ -70,7 +70,7 @@
         app:boxStrokeWidth="1dp"
         app:boxStrokeWidthFocused="2dp"
         app:hintTextColor="@color/primary"
-        app:defaultHintTextColor="@color/soft_gray"
+
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/placeholder_color">
 
