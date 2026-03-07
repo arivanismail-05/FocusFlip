@@ -36,12 +36,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:hint="Full Name"
-        app:boxCornerRadiusBottomEnd="12dp"
-        app:boxCornerRadiusBottomStart="12dp"
-        app:boxCornerRadiusTopEnd="12dp"
         app:boxCornerRadiusTopStart="12dp"
-        app:boxStrokeColor="@color/placeholder_color"
-        app:hintTextColor="@color/placeholder_color">
+        app:boxCornerRadiusTopEnd="12dp"
+        app:boxCornerRadiusBottomStart="12dp"
+        app:boxCornerRadiusBottomEnd="12dp"
+        app:boxStrokeColor="@color/primary"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="@color/primary"
+>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/name"
@@ -58,12 +61,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="Email"
-        app:boxCornerRadiusBottomEnd="12dp"
-        app:boxCornerRadiusBottomStart="12dp"
-        app:boxCornerRadiusTopEnd="12dp"
         app:boxCornerRadiusTopStart="12dp"
-        app:boxStrokeColor="@color/placeholder_color"
-        app:hintTextColor="@color/placeholder_color">
+        app:boxCornerRadiusTopEnd="12dp"
+        app:boxCornerRadiusBottomStart="12dp"
+        app:boxCornerRadiusBottomEnd="12dp"
+        app:boxStrokeColor="@color/primary"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="@color/primary"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email"
@@ -81,13 +87,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="Password"
-        app:boxCornerRadiusBottomEnd="12dp"
-        app:boxCornerRadiusBottomStart="12dp"
-        app:boxCornerRadiusTopEnd="12dp"
         app:boxCornerRadiusTopStart="12dp"
+        app:boxCornerRadiusTopEnd="12dp"
+        app:boxCornerRadiusBottomStart="12dp"
+        app:boxCornerRadiusBottomEnd="12dp"
+        app:boxStrokeColor="@color/primary"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="@color/primary"
         app:passwordToggleEnabled="true"
-        app:boxStrokeColor="@color/placeholder_color"
-        app:hintTextColor="@color/placeholder_color">
+        app:passwordToggleTint="@color/placeholder_color">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password"
@@ -105,15 +114,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="Confirm Password"
-        app:boxCornerRadiusBottomEnd="12dp"
-        app:boxCornerRadiusBottomStart="12dp"
-        app:boxCornerRadiusTopEnd="12dp"
         app:boxCornerRadiusTopStart="12dp"
+        app:boxCornerRadiusTopEnd="12dp"
+        app:boxCornerRadiusBottomStart="12dp"
+        app:boxCornerRadiusBottomEnd="12dp"
+        app:boxStrokeColor="@color/primary"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="@color/primary"
         app:passwordToggleEnabled="true"
-        app:boxStrokeColor="@color/placeholder_color"
-        app:boxStrokeColorStateList="@color/placeholder_color"
-        app:hintTextColor="@color/placeholder_color"
-        app:defaultHintTextColor="@color/placeholder_color">
+        app:passwordToggleTint="@color/placeholder_color">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/confirm_password"
@@ -141,11 +151,15 @@
         android:orientation="horizontal">
 
         <Spinner
+            android:layout_marginTop="1dp"
             android:id="@+id/month"
             android:layout_width="0dp"
             android:layout_height="55dp"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
+            android:background="@drawable/spinner_border"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
             android:entries="@array/months_array" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -155,12 +169,15 @@
             android:layout_marginEnd="8dp"
             android:layout_weight="0.8"
             android:hint="Day"
-            app:boxCornerRadiusBottomEnd="10dp"
-            app:boxCornerRadiusBottomStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxCornerRadiusTopStart="10dp"
-            app:boxStrokeColor="@color/placeholder_color"
-            app:hintTextColor="@color/placeholder_color">
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxStrokeColor="@color/primary"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:hintTextColor="@color/primary"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/day"
@@ -178,14 +195,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="Year"
-            app:boxCornerRadiusBottomEnd="10dp"
-            app:boxCornerRadiusBottomStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxCornerRadiusTopStart="10dp"
-            app:boxStrokeColor="@color/placeholder_color"
-            app:boxStrokeColorStateList="@color/placeholder_color"
-            app:hintTextColor="@color/placeholder_color"
-            app:defaultHintTextColor="@color/placeholder_color">
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxStrokeColor="@color/primary"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:hintTextColor="@color/primary"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/year"
@@ -225,7 +243,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:text="Male"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                app:buttonTint="@color/primary" />
 
             <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/female"
@@ -233,14 +252,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:text="Female"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                app:buttonTint="@color/primary" />
 
             <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/other"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Other"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                app:buttonTint="@color/primary" />
         </RadioGroup>
     </LinearLayout>
 

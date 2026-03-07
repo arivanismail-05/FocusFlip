@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="primary">#4f46e5</color>
     <color name="placeholder_color">#944F46E5</color>
+    <color name="soft_gray">#A2A0A0</color>
     <color name="gray_subtitle">#FF757575</color>
     <color name="light_gray">#FFF5F5F5</color>
 </resources>

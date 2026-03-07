@@ -31,16 +31,20 @@
         android:textSize="14sp" />
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:hint="Email"
-        app:hintTextColor="@color/placeholder_color"
-        app:boxCornerRadiusBottomEnd="12dp"
-        app:boxCornerRadiusBottomStart="12dp"
-        app:boxCornerRadiusTopEnd="12dp"
         app:boxCornerRadiusTopStart="12dp"
-        app:boxStrokeColor="@color/placeholder_color">
+        app:boxCornerRadiusTopEnd="12dp"
+        app:boxCornerRadiusBottomStart="12dp"
+        app:boxCornerRadiusBottomEnd="12dp"
+        app:boxStrokeColor="@color/primary"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="@color/primary"
+        app:defaultHintTextColor="@color/soft_gray">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email"
@@ -58,14 +62,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         android:hint="Password"
-        app:hintTextColor="@color/placeholder_color"
-        app:boxCornerRadiusBottomEnd="12dp"
-        app:boxCornerRadiusBottomStart="12dp"
-        app:boxCornerRadiusTopEnd="12dp"
         app:boxCornerRadiusTopStart="12dp"
+        app:boxCornerRadiusTopEnd="12dp"
+        app:boxCornerRadiusBottomStart="12dp"
+        app:boxCornerRadiusBottomEnd="12dp"
+        app:boxStrokeColor="@color/primary"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:hintTextColor="@color/primary"
+        app:defaultHintTextColor="@color/soft_gray"
         app:passwordToggleEnabled="true"
-        app:boxStrokeColor="@color/placeholder_color"
-        app:boxStrokeWidth="1.5dp">
+        app:passwordToggleTint="@color/placeholder_color">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password"
