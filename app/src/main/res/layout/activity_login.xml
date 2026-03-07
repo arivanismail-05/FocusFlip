@@ -31,15 +31,16 @@
         android:textSize="14sp" />
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:hint="Email"
+        app:hintTextColor="@color/placeholder_color"
         app:boxCornerRadiusBottomEnd="12dp"
         app:boxCornerRadiusBottomStart="12dp"
         app:boxCornerRadiusTopEnd="12dp"
-        app:boxCornerRadiusTopStart="12dp">
+        app:boxCornerRadiusTopStart="12dp"
+        app:boxStrokeColor="@color/placeholder_color">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email"
@@ -57,11 +58,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         android:hint="Password"
+        app:hintTextColor="@color/placeholder_color"
         app:boxCornerRadiusBottomEnd="12dp"
         app:boxCornerRadiusBottomStart="12dp"
         app:boxCornerRadiusTopEnd="12dp"
         app:boxCornerRadiusTopStart="12dp"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        app:boxStrokeColor="@color/placeholder_color"
+        app:boxStrokeWidth="1.5dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password"
@@ -72,7 +76,6 @@
             android:paddingBottom="14dp"
             android:textSize="15sp" />
     </com.google.android.material.textfield.TextInputLayout>
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/login"
         android:layout_width="match_parent"

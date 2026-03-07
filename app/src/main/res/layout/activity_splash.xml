@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Flip"
-            android:textColor="#4f46e5"
+            android:textColor="@color/primary"
             android:textSize="30sp"
             android:textStyle="bold"/>
     </LinearLayout>
